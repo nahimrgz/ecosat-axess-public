@@ -16,8 +16,6 @@ const express_1 = __importDefault(require("express"));
 const http_1 = __importDefault(require("http"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
-const serve_favicon_1 = __importDefault(require("serve-favicon"));
-const path_1 = __importDefault(require("path"));
 //Routes
 const root_routes_1 = __importDefault(require("./routes/root.routes"));
 class App {
@@ -102,7 +100,6 @@ class App {
         this.app.use(cors_1.default());
         this.app.use(morgan_1.default('dev'));
         this.app.use(express_1.default.json());
-        this.app.use(serve_favicon_1.default(path_1.default.join(__dirname, 'public', 'favicon.ico')));
         this.app.use(express_1.default.urlencoded({ extended: true })); //Esta linea se utiliza cuando enviamos datos del formulario
     }
     routes() {
