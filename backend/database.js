@@ -9,13 +9,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getInfo = void 0;
-function getInfo(req, resp) {
+exports.Connect = void 0;
+const promise_1 = require("mysql2/promise");
+function Connect() {
     return __awaiter(this, void 0, void 0, function* () {
-        return resp.status(500).json({
-            error: false,
-            message: 'Hello, you shouldn\'t be here'
+        const connection = yield promise_1.createPool({
+            host: '192.168.10.15',
+            //socketPath: '/cloudsql/signage-283915:us-west4:signage-instance',
+            user: 'Nahim_Ecosat',
+            password: 'Ecosat.2019',
+            database: 'axesindustrial',
+            connectionLimit: 10,
+            timezone: '-06:00',
+            dateStrings: true
         });
+        return connection;
     });
 }
-exports.getInfo = getInfo;
+exports.Connect = Connect;
